@@ -16,13 +16,17 @@ one_one_option = {}
 one_one_option['1.'] = 'Yes'
 one_one_option['any_key: '] = "No, go back to main menu"
 
-
-def add_a_note():
+def all_selection_stuff():
     room_names = list(rooms.keys())
     for index, room in enumerate(room_names, 1):
         print(index, room)
     selection = input("Please select:")
     selected_room = rooms[room_names[int(selection) - 1]]
+    return selection, selected_room, room_names
+
+
+def add_a_note():
+    selection, selected_room, room_names = all_selection_stuff()
     selected_room.append(input('Type your note here:'))
     print('Do you want to add another note:')
     for option in one_one_option:
@@ -33,11 +37,7 @@ def add_a_note():
 
 
 def view_notes():
-    room_names = list(rooms.keys())
-    for index, room in enumerate(room_names, 1):
-        print(index, room)
-    selection = input("Please select:")
-    selected_room = rooms[room_names[int(selection)-1]]
+    selection, selected_room, room_names = all_selection_stuff()
     if selected_room == []:
         print("You don't have any notes")
     for i, note in enumerate(selected_room, 1):
@@ -46,11 +46,7 @@ def view_notes():
 
 
 def delete_a_note():
-    room_names = list(rooms.keys())
-    for index, room in enumerate(room_names, 1):
-        print(index, room)
-    selection = input("Please select:")
-    selected_room = rooms[room_names[int(selection) - 1]]
+    selection, selected_room, room_names = all_selection_stuff()
     if selected_room == []:
         print("You have nothing to remove")
     else:
