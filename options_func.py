@@ -8,7 +8,7 @@ rooms = {
     'Bathroom':  [],
     'Conference_room': [],
     'Warehouse': [],
-    'Shittyroom':  []
+    'JanitorCastle':  []
 }
 
 
@@ -22,7 +22,7 @@ def all_selection_stuff():
     for index, room in enumerate(room_names, 1):
         print(index, room)
     selection = input("Please select:")
-    while selection not in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10'):
+    while not selection.isdigit() or int(selection) < 1 or int(selection) > len(room_names):
         selection = input("Please enter a valid data:")
     selected_room = rooms[room_names[int(selection) - 1]]
     return selection, selected_room, room_names
