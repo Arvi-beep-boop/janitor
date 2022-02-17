@@ -30,8 +30,8 @@ def all_selection_stuff():
 
 def add_a_note():
     selection, selected_room, room_names = all_selection_stuff()
-    selected_room.append(input('Type your note here:'))
-    print('Do you want to add another note:')
+    selected_room.append(input("Type your note here:"))
+    print("Do you want to add another note:")
     for option in one_one_option:
         print(option, str(one_one_option[option]))
     selection = input("Please select:")
@@ -50,9 +50,14 @@ def view_notes():
 
 def delete_a_note():
     selection, selected_room, room_names = all_selection_stuff()
+    all_notes = []
+    for i in range(1, len(selected_room) + 1):
+        all_notes.append(str(i))
     if selected_room == []:
         print("You have nothing to remove")
     else:
         del_num = input("Select a number of a note You'd like to remove:")
+        while del_num not in all_notes:
+            del_num = input("No such note, Select a number of a note You'd like to remove:")
         if 1 <= int(del_num) <= len(selected_room):
             del selected_room[int(del_num)-1]
