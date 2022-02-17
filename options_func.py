@@ -16,11 +16,14 @@ one_one_option = {}
 one_one_option['1.'] = 'Yes'
 one_one_option['any_key: '] = "No, go back to main menu"
 
+
 def all_selection_stuff():
     room_names = list(rooms.keys())
     for index, room in enumerate(room_names, 1):
         print(index, room)
     selection = input("Please select:")
+    while selection not in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10'):
+        selection = input("Please enter a valid data:")
     selected_room = rooms[room_names[int(selection) - 1]]
     return selection, selected_room, room_names
 
